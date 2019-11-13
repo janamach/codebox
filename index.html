@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>afterglow player</title>
+		<script src="afterglow/dist/afterglow.min.js"></script>
+		<!--<script src="afterglow/src/js/afterglow/Afterglow.js"></script>-->
+		<script>
+			  document.getElementById("output").innerHTML = "";
+
+			
+		//	function recordtimestamp() {
+		//	  var currentPlaybackTime = afterglow.getPlayer('myvideo').currentTime();
+		//	  document.getElementById("output").innerHTML = document.getElementById("output").innerHTML + currentPlaybackTime + "<br/>";
+		function recordtimestamp() {
+				var keycode = (event.keyCode ? event.keyCode : event.which);
+
+  		  switch (keycode) {
+    		  case 66: //b
+            var currentPlaybackTime = afterglow.getPlayer('myvideo').currentTime();
+			      afterglow.getPlayer('myvideo').currentTime(currentPlaybackTime - 3);
+			      break;
+
+			case 78: //n
+            var currentPlaybackTime = afterglow.getPlayer('myvideo').currentTime();
+			      afterglow.getPlayer('myvideo').currentTime(currentPlaybackTime + 3);
+			      break;
+
+
+			    case 82: //r
+    	 		  var currentPlaybackTime = afterglow.getPlayer('myvideo').currentTime();
+  	        document.getElementById("output").innerHTML = document.getElementById("output").innerHTML + currentPlaybackTime + "<br/>";
+			      break;
+			    }
+  	      //document.getElementById("output").innerHTML = document.getElementById("output").innerHTML + keycode + "<br/>";
+			}
+			
+		</script>
+  </head>
+  <body onkeydown="recordtimestamp()">
+    <video class="afterglow" id="myvideo" width="640" height="360">
+    <source type="video/mp4" src="vortex_10DPE_20191025_151705.mkv">
+    </video>
+
+		<!--<input type="text" onkeydown="recordtimestamp()">--> 
+		<div id="output"></div>
+
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		
+		
+  </body>
+</html>
